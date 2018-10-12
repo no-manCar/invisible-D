@@ -50,7 +50,7 @@ int main()
 		Rect roi(0,image.rows/3,image.cols,image.rows/3);
 		Mat imgROI=image(roi);
 
-		cvtColor(imgROI,grey,CV_RGB2GREY);
+		cvtColor(imgROI,grey,CV_RGB2GRAY);
 		GaussianBlur(grey,blur,Size(9,9),0);
 		morphologyEx(blur, close, CV_MOP_CLOSE, element);
 		morphologyEx(close, open, CV_MOP_OPEN, element);
