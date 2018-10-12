@@ -28,7 +28,7 @@ int main()
 
 	VideoCapture capture(CAM_PATH);
 
-	Mat element = getStructuringElement(MORPH_RECT, Size(13, 5) ); 
+	Mat element = getStructuringElement(MORPH_RECT, Size(8, 5) );
 
 	if (!capture.isOpened())
 	{
@@ -50,7 +50,7 @@ int main()
 		Rect roi(0,image.rows/3,image.cols,image.rows/3);
 		Mat imgROI=image(roi);
 
-		GaussianBlur(imgROI,blur,Size(5,5),0);
+		GaussianBlur(imgROI,blur,Size(10,10),0);
 		morphologyEx(blur, close, CV_MOP_CLOSE, element);
 		morphologyEx(close, open, CV_MOP_OPEN, element);
 		threshold(open, binary, THRESHOLD , 255, THRESH_BINARY_INV);
@@ -66,7 +66,7 @@ int main()
 
 
 		vector<Vec2f> lines;
-		HoughLines(contours,lines,1,PI/180,HOUGH_THRESHOLD);
+		HoughLines(contours,lines,2,PI/180,HOUGH_THRESHOLD);
 		Mat result(imgROI.size(),CV_8U,Scalar(255));
 		imgROI.copyTo(result);
 		clog<<lines.size()<<endl;
@@ -91,7 +91,7 @@ int main()
 				
 				#ifdef _DEBUG
 				Point pt1(rho/cos(theta),0);
-				Point pt2((rho-result.rows*sin(theta))/cos(theta),result.rows);r
+				Point pt2((rho-result.rows*sin(theta))/cos(theta),result.rows);
 				line(result,pt1,pt2,Scalar(0,255,255),3,CV_AA);
 				#endif
 			}
