@@ -21,14 +21,14 @@ const string CANNY_WINDOW_NAME="Canny";
 const int CANNY_LOWER_BOUND=10;
 const int CANNY_UPPER_BOUND=250;
 const int HOUGH_THRESHOLD=150;
-const int THRESHOLD = 180;
+const int THRESHOLD = 120;
 
 int main()
 {
 
 	VideoCapture capture(CAM_PATH);
 
-	Mat element = getStructuringElement(MORPH_RECT, Size(11, 5) );
+	Mat element = getStructuringElement(MORPH_RECT, Size(7, 5) );
 
 	if (!capture.isOpened())
 	{
@@ -51,7 +51,7 @@ int main()
 		Mat imgROI=image(roi);
 
 		cvtColor(imgROI,grey,CV_RGB2GRAY);
-		GaussianBlur(grey,blur,Size(9,9),0);
+		GaussianBlur(grey,blur,Size(3,3),0);
 		morphologyEx(blur, close, CV_MOP_CLOSE, element);
 		morphologyEx(close, open, CV_MOP_OPEN, element);
 		threshold(open, binary, THRESHOLD , 255, THRESH_BINARY_INV);
