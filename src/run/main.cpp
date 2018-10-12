@@ -28,7 +28,7 @@ int main()
 
 	VideoCapture capture(CAM_PATH);
 
-	Mat element = getStructuringElement(MORPH_RECT, Size(8, 5) );
+	Mat element = getStructuringElement(MORPH_RECT, Size(7, 5) );
 
 	if (!capture.isOpened())
 	{
