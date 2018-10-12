@@ -18,14 +18,18 @@ const string CAM_PATH="/dev/video0";
 const string MAIN_WINDOW_NAME="Processed Image";
 const string CANNY_WINDOW_NAME="Canny";
 
-const int CANNY_LOWER_BOUND=50;
+const int CANNY_LOWER_BOUND=10;
 const int CANNY_UPPER_BOUND=250;
 const int HOUGH_THRESHOLD=150;
+const int THRESHOLD = 120;
 
 int main()
 {
+
 	VideoCapture capture(CAM_PATH);
-	
+
+	Mat element = getStructuringElement(MORPH_RECT, Size(13, 5) ); 
+
 	if (!capture.isOpened())
 	{
 		capture.open(atoi(CAM_PATH.c_str()));
@@ -40,16 +44,25 @@ int main()
 		capture>>image;
 		if(image.empty())
 			break;
+                
+		Mat blur,open,close,binary;
 
 		Rect roi(0,image.rows/3,image.cols,image.rows/3);
 		Mat imgROI=image(roi);
 
+		GaussianBlur(imgROI,blur,Size(5,5),0);
+		morphologyEx(blur, close, CV_MOP_CLOSE, element);
+		morphologyEx(close, open, CV_MOP_OPEN, element);
+		threshold(open, binary, THRESHOLD , 255, THRESH_BINARY_INV);
+
 		Mat contours;
-		Canny(imgROI,contours,CANNY_LOWER_BOUND,CANNY_UPPER_BOUND);
+		Canny(binary,contours,CANNY_LOWER_BOUND,CANNY_UPPER_BOUND);
 
 		#ifdef _DEBUG
 		imshow(CANNY_WINDOW_NAME,contours);
 		#endif
+
+		
 
 
 		vector<Vec2f> lines;
@@ -60,6 +73,7 @@ int main()
 		
 		float maxRad=-2*PI;
 		float minRad=2*PI;
+
 		//Draw the lines and judge the slope
 		for(vector<Vec2f>::const_iterator it=lines.begin();it!=lines.end();++it)
 		{
@@ -77,7 +91,7 @@ int main()
 				
 				#ifdef _DEBUG
 				Point pt1(rho/cos(theta),0);
-				Point pt2((rho-result.rows*sin(theta))/cos(theta),result.rows);
+				Point pt2((rho-result.rows*sin(theta))/cos(theta),result.rows);r
 				line(result,pt1,pt2,Scalar(0,255,255),3,CV_AA);
 				#endif
 			}
