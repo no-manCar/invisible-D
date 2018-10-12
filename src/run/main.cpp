@@ -50,7 +50,7 @@ int main()
 		Rect roi(0,image.rows/3,image.cols,image.rows/3);
 		Mat imgROI=image(roi);
 
-		GaussianBlur(imgROI,blur,Size(10,10),0);
+		GaussianBlur(imgROI,blur,Size(8,8),0);
 		morphologyEx(blur, close, CV_MOP_CLOSE, element);
 		morphologyEx(close, open, CV_MOP_OPEN, element);
 		threshold(open, binary, THRESHOLD , 255, THRESH_BINARY_INV);
