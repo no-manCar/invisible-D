@@ -107,7 +107,9 @@ int main()
 		putText(result,overlayedText.str(),Point(10,result.rows-10),2,0.8,Scalar(0,0,255),0);
 		imshow(MAIN_WINDOW_NAME,result);
 		#endif
-
+        imshow("1",blur);
+        imshow("2",close);
+        imshow("3",binary);
 		lines.clear();
 		waitKey(1);
 	}
