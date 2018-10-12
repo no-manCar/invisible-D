@@ -83,7 +83,7 @@ int main()
 
 			//Filter to remove vertical and horizontal lines,
 			//and atan(0.09) equals about 5 degrees.
-			if((theta>0.09&&theta<1.48)||(theta>1.62&&theta<3.05))
+			if((theta>0.01&&theta<1.56)||(theta>1.58&&theta<3.13))
 			{
 				if(theta>maxRad)
 					maxRad=theta;
