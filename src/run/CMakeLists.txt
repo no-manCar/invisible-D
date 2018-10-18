@@ -1,16 +1,16 @@
 cmake_minimum_required(VERSION 2.8)
 
-PROJECT(LaneDetection_Demo)
+PROJECT(noman)
 
 FIND_PACKAGE(OpenCV REQUIRED)
 
-SET(SRC
- main.cpp
+SET(SRC main.cpp GPIOlib.h
 )
 
 SET(PROJECT_NAME
- demo
+ noman
 )
 
 ADD_EXECUTABLE(${PROJECT_NAME} ${SRC})
-TARGET_LINK_LIBRARIES(${PROJECT_NAME}  ${OpenCV_LIBS})
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${OpenCV_LIBS})
+target_link_libraries(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/src/lib/libGPIO.a)

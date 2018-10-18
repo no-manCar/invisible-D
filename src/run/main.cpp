@@ -13,6 +13,7 @@
 
 using namespace cv;
 using namespace std;
+using namespace GPIO;
 
 const string CAM_PATH="/dev/video0";
 const string MAIN_WINDOW_NAME="Processed Image";
@@ -25,6 +26,17 @@ const int THRESHOLD = 120;
 
 int main()
 {
+
+    //turn left right
+    init();
+    for(int i=-45;i<=45;i+=15)
+    {
+        turnTo(i);
+        delay(1000);
+    }
+
+    turnTo(0);
+    //turn end
 
 	VideoCapture capture(CAM_PATH);
 
@@ -64,7 +76,6 @@ int main()
 		imshow(CANNY_WINDOW_NAME,contours);
 		#endif
 
-		
 
 
 		vector<Vec2f> lines;
@@ -82,8 +93,8 @@ int main()
 			float rho=(*it)[0];			//First element is distance rho
 			float theta=(*it)[1];		//Second element is angle theta
 
-			//Filter to remove vertical and horizontal lines,
-			//and atan(0.09) equals about 5 degrees.
+//			Filter to remove vertical and horizontal lines,
+//			and atan(0.09) equals about 5 degrees.
 			if((theta>0.01&&theta<1.56)||(theta>1.58&&theta<3.13))
 			{
 				if(theta>maxRad)
@@ -107,10 +118,10 @@ int main()
 		stringstream overlayedText;
 		overlayedText<<"Lines: "<<lines.size();
 		putText(result,overlayedText.str(),Point(10,result.rows-10),2,0.8,Scalar(0,0,255),0);
-		imshow(MAIN_WINDOW_NAME,result);
+//		imshow(MAIN_WINDOW_NAME,result);
 		#endif
-        imshow("1",blur);
-        imshow("2",close);
+//        imshow("1",blur);
+//        imshow("2",close);
         imshow("3",binary);
 		lines.clear();
 		waitKey(1);
