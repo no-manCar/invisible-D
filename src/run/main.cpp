@@ -31,14 +31,16 @@ int main()
 
     //turn left right
     init();
-    for(int i=-45;i<=45;i+=15)
-    {
-        turnTo(i);
-        delay(1000);
-    }
-
-    turnTo(0);
+//    for(int i=-45;i<=45;i+=15)
+//    {
+//        turnTo(i);
+//        delay(1000);
+//    }
+//
+//    turnTo(0);
     //turn end
+
+
 
 	VideoCapture capture(CAM_PATH);
 
@@ -55,6 +57,10 @@ int main()
 	Mat image;
 	while(true)
 	{
+
+		controlLeft(FORWARD,50);
+		controlRight(FORWARD,50);
+
 		capture>>image;
 		if(image.empty())
 			break;
@@ -92,6 +98,10 @@ int main()
 		//Draw the lines and judge the slope
 		for(vector<Vec2f>::const_iterator it=lines.begin();it!=lines.end();++it)
 		{
+
+			stopLeft();
+			stopRight();
+
 			float rho=(*it)[0];			//First element is distance rho
 			float theta=(*it)[1];		//Second element is angle theta
 
