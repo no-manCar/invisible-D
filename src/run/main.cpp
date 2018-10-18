@@ -113,11 +113,11 @@ int main()
 			float rho=(*it)[0];			//First element is distance rho
 			float theta=(*it)[1];		//Second element is angle theta
 
-			if(theta>pi/2&&theta<pi-0.3){
+			if(theta>PI/2&&theta<pi-0.3){
 				controlLeft(FORWARD,20);
 				controlRight(FORWARD,10);
 			}
-			else if(theta<pi/2&&theta<pi+0.3){
+			else if(theta<PI/2&&theta<pi+0.3){
 				controlLeft(FORWARD,10);
 				controlRight(FORWARD,20);
 			}
