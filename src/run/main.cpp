@@ -57,9 +57,9 @@ int main()
 	Mat image;
 	while(true)
 	{
-
-		controlLeft(FORWARD,50);
-		controlRight(FORWARD,50);
+//
+//		controlLeft(FORWARD,50);
+//		controlRight(FORWARD,50);
 
 		capture>>image;
 		if(image.empty())
@@ -91,7 +91,13 @@ int main()
 		Mat result(imgROI.size(),CV_8U,Scalar(255));
 		imgROI.copyTo(result);
 		clog<<lines.size()<<endl;
-		
+
+		if(!lines.size()){
+			controlLeft(FORWARD,10);
+			controlRight(FORWARD,10);
+		}
+
+
 		float maxRad=-2*PI;
 		float minRad=2*PI;
 
