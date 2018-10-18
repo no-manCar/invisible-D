@@ -13,4 +13,4 @@ SET(PROJECT_NAME
 
 ADD_EXECUTABLE(${PROJECT_NAME} ${SRC})
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${OpenCV_LIBS})
-target_link_libraries(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/src/lib/libGPIO.a)
+target_link_libraries(${PROJECT_NAME} libGPIO.a)
