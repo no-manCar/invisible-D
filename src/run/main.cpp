@@ -115,12 +115,14 @@ int main()
 			float theta=(*it)[1];		//Second element is angle theta
 
 			if(theta>PI/2&&theta<PI-0.3){
-				turnTo(5);
+				turnTo(15);
+//				clog << 1;
 //				controlLeft(FORWARD,15);
 //				controlRight(FORWARD,20);
 			}
-			else if(theta<PI/2&&theta<PI+0.3){
-				turnTo(-5);
+			else if(theta<PI/2&&theta>0.3){
+				turnTo(-15);
+//				clog <<2;
 // 				controlLeft(FORWARD,20);
 //				controlRight(FORWARD,15);
 			}
