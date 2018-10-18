@@ -93,8 +93,9 @@ int main()
 		clog<<lines.size()<<endl;
 
 		if(!lines.size()){
-			controlLeft(FORWARD,20);
-			controlRight(FORWARD,20);
+			turnTo(0);
+			controlLeft(FORWARD,15);
+			controlRight(FORWARD,15);
 		}
 
 
@@ -114,12 +115,14 @@ int main()
 			float theta=(*it)[1];		//Second element is angle theta
 
 			if(theta>PI/2&&theta<PI-0.3){
-				controlLeft(FORWARD,10);
-				controlRight(FORWARD,20);
+				turnTo(5);
+//				controlLeft(FORWARD,15);
+//				controlRight(FORWARD,20);
 			}
 			else if(theta<PI/2&&theta<PI+0.3){
-				controlLeft(FORWARD,20);
-				controlRight(FORWARD,10);
+				turnTo(-5);
+// 				controlLeft(FORWARD,20);
+//				controlRight(FORWARD,15);
 			}
 			else{
 				stopLeft();
@@ -128,19 +131,19 @@ int main()
 
 //			Filter to remove vertical and horizontal lines,
 //			and atan(0.09) equals about 5 degrees.
-//			if((theta>0.01&&theta<1.56)||(theta>1.58&&theta<3.13))
-//			{
-//				if(theta>maxRad)
-//					maxRad=theta;
-//				if(theta<minRad)
-//					minRad=theta;
-//
-//				#ifdef _DEBUG
-//				Point pt1(rho/cos(theta),0);
-//				Point pt2((rho-result.rows*sin(theta))/cos(theta),result.rows);
-//				line(result,pt1,pt2,Scalar(0,255,255),3,CV_AA);
-//				#endif
-//			}
+			if((theta>0.01&&theta<1.56)||(theta>1.58&&theta<3.13))
+			{
+				if(theta>maxRad)
+					maxRad=theta;
+				if(theta<minRad)
+					minRad=theta;
+
+				#ifdef _DEBUG
+				Point pt1(rho/cos(theta),0);
+				Point pt2((rho-result.rows*sin(theta))/cos(theta),result.rows);
+				line(result,pt1,pt2,Scalar(0,255,255),3,CV_AA);
+				#endif
+			}
 
 			#ifdef _DEBUG
 			clog<<"Line: ("<<rho<<","<<theta<<")\n";
