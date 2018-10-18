@@ -37,7 +37,7 @@ int main()
 //        delay(1000);
 //    }
 //
-//    turnTo(0);
+    turnTo(0);
     //turn end
 
 
@@ -93,8 +93,8 @@ int main()
 		clog<<lines.size()<<endl;
 
 		if(!lines.size()){
-			controlLeft(FORWARD,10);
-			controlRight(FORWARD,10);
+			controlLeft(FORWARD,20);
+			controlRight(FORWARD,20);
 		}
 
 
@@ -108,24 +108,39 @@ int main()
 			stopLeft();
 			stopRight();
 
+
+
 			float rho=(*it)[0];			//First element is distance rho
 			float theta=(*it)[1];		//Second element is angle theta
 
+			if(theta>pi/2&&theta<pi-0.3){
+				controlLeft(FORWARD,20);
+				controlRight(FORWARD,10);
+			}
+			else if(theta<pi/2&&theta<pi+0.3){
+				controlLeft(FORWARD,10);
+				controlRight(FORWARD,20);
+			}
+			else{
+				stopLeft();
+				stopRight();
+			}
+
 //			Filter to remove vertical and horizontal lines,
 //			and atan(0.09) equals about 5 degrees.
-			if((theta>0.01&&theta<1.56)||(theta>1.58&&theta<3.13))
-			{
-				if(theta>maxRad)
-					maxRad=theta;
-				if(theta<minRad)
-					minRad=theta;
-				
-				#ifdef _DEBUG
-				Point pt1(rho/cos(theta),0);
-				Point pt2((rho-result.rows*sin(theta))/cos(theta),result.rows);
-				line(result,pt1,pt2,Scalar(0,255,255),3,CV_AA);
-				#endif
-			}
+//			if((theta>0.01&&theta<1.56)||(theta>1.58&&theta<3.13))
+//			{
+//				if(theta>maxRad)
+//					maxRad=theta;
+//				if(theta<minRad)
+//					minRad=theta;
+//
+//				#ifdef _DEBUG
+//				Point pt1(rho/cos(theta),0);
+//				Point pt2((rho-result.rows*sin(theta))/cos(theta),result.rows);
+//				line(result,pt1,pt2,Scalar(0,255,255),3,CV_AA);
+//				#endif
+//			}
 
 			#ifdef _DEBUG
 			clog<<"Line: ("<<rho<<","<<theta<<")\n";
@@ -136,11 +151,11 @@ int main()
 		stringstream overlayedText;
 		overlayedText<<"Lines: "<<lines.size();
 		putText(result,overlayedText.str(),Point(10,result.rows-10),2,0.8,Scalar(0,0,255),0);
-//		imshow(MAIN_WINDOW_NAME,result);
+		imshow(MAIN_WINDOW_NAME,result);
 		#endif
 //        imshow("1",blur);
 //        imshow("2",close);
-        imshow("3",binary);
+//        imshow("3",binary);
 		lines.clear();
 		waitKey(1);
 	}
