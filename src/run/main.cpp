@@ -6,6 +6,8 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/opencv.hpp>
 
+#include "GPIOlib.h"
+
 #define PI 3.1415926
 
 //Uncomment this line at run-time to skip GUI rendering
