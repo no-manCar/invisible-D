@@ -44,6 +44,8 @@ int main()
 
 	VideoCapture capture(CAM_PATH);
 
+	int radian = 0;
+
 	Mat element = getStructuringElement(MORPH_RECT, Size(7, 5) );
 
 	if (!capture.isOpened())
@@ -93,7 +95,7 @@ int main()
 		clog<<lines.size()<<endl;
 
 		if(!lines.size()){
-			turnTo(0);
+			turnTo(radian);
 			controlLeft(FORWARD,15);
 			controlRight(FORWARD,15);
 		}
@@ -115,7 +117,8 @@ int main()
 			float theta=(*it)[1];		//Second element is angle theta
 
 			if(theta>PI/2&&theta<PI-0.3){
-				turnTo(-15);
+				radian = -5;
+				turnTo(-15+radian);
 				controlLeft(FORWARD,15);
 				controlRight(FORWARD,15);
 //				clog << 1;
@@ -123,7 +126,8 @@ int main()
 //				controlRight(FORWARD,20);
 			}
 			else if(theta<PI/2&&theta>0.3){
-				turnTo(15);
+				radian = 5;
+				turnTo(15+radian);
 				controlLeft(FORWARD,15);
 				controlRight(FORWARD,15);
 //				clog <<2;
