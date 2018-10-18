@@ -45,14 +45,15 @@ int main()
 		if(image.empty())
 			break;
                 
-		Mat blur,open,close,binary,grey;
+		Mat blur,open,close,binary,grey,smooth;
 
 		Rect roi(0,image.rows/3,image.cols,image.rows/3);
 		Mat imgROI=image(roi);
 
 		cvtColor(imgROI,grey,CV_RGB2GRAY);
 		GaussianBlur(grey,blur,Size(3,3),0);
-		morphologyEx(blur, close, CV_MOP_CLOSE, element);
+		cvSmooth(blur,smooth,CV_GAUSSIAN,3,3);
+		morphologyEx(smooth, close, CV_MOP_CLOSE, element);
 		morphologyEx(close, open, CV_MOP_OPEN, element);
 		threshold(open, binary, THRESHOLD , 255, THRESH_BINARY_INV);
 
