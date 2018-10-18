@@ -52,7 +52,7 @@ int main()
 
 		cvtColor(imgROI,grey,CV_RGB2GRAY);
 		GaussianBlur(grey,blur,Size(3,3),0);
-		cvSmooth(blur,smooth,CV_GAUSSIAN,3,3);
+		medianBlur(blur,smooth,(3,3));
 		morphologyEx(smooth, close, CV_MOP_CLOSE, element);
 		morphologyEx(close, open, CV_MOP_OPEN, element);
 		threshold(open, binary, THRESHOLD , 255, THRESH_BINARY_INV);
