@@ -25,6 +25,8 @@ const int CANNY_LOWER_BOUND=10;
 const int CANNY_UPPER_BOUND=250;
 const int HOUGH_THRESHOLD=150;
 const int THRESHOLD = 120;
+const int speed = 10;
+const int turn = 10;
 
 int main()
 {
@@ -98,8 +100,8 @@ int main()
 
 		if(!lines.size()){
 			turnTo(0);
-			controlLeft(FORWARD,15);
-			controlRight(FORWARD,15);
+			controlLeft(FORWARD,speed);
+			controlRight(FORWARD,speed);
 		}
 
 
@@ -120,18 +122,18 @@ int main()
 
 			if(theta>PI/2&&theta<PI-0.3){
 				radian = -5;
-				turnTo(-15+radian);
-				controlLeft(FORWARD,15);
-				controlRight(FORWARD,15);
+				turnTo(-turn+radian);
+				controlLeft(FORWARD,speed);
+				controlRight(FORWARD,speed);
 //				clog << 1;
 //				controlLeft(FORWARD,15);
 //				controlRight(FORWARD,20);
 			}
 			else if(theta<PI/2&&theta>0.3){
 				radian = 5;
-				turnTo(15+radian);
-				controlLeft(FORWARD,15);
-				controlRight(FORWARD,15);
+				turnTo(turn+radian);
+				controlLeft(FORWARD,speed);
+				controlRight(FORWARD,speed);
 //				clog <<2;
 // 				controlLeft(FORWARD,20);
 //				controlRight(FORWARD,15);
