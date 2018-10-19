@@ -45,6 +45,7 @@ int main()
 	VideoCapture capture(CAM_PATH);
 
 	int radian = 0;
+	int stop_flag = 0;
 
 	Mat element = getStructuringElement(MORPH_RECT, Size(7, 5) );
 
@@ -62,6 +63,7 @@ int main()
 //
 //		controlLeft(FORWARD,50);
 //		controlRight(FORWARD,50);
+		stop_flag = 0;
 
 		capture>>image;
 		if(image.empty())
@@ -135,6 +137,9 @@ int main()
 //				controlRight(FORWARD,15);
 			}
 			else{
+				
+					
+				
 				stopLeft();
 				stopRight();
 			}
