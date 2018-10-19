@@ -121,7 +121,7 @@ int main()
 			float rho=(*it)[0];			//First element is distance rho
 			float theta=(*it)[1];		//Second element is angle theta
 
-			if(theta>PI/2&&theta<PI-0.3){
+			if(theta>PI/2+0.2&&theta<PI-0.2){
 				radian = -5;
 				turnTo(-turn+radian);
 				controlLeft(FORWARD,speed);
@@ -130,7 +130,7 @@ int main()
 //				controlLeft(FORWARD,15);
 //				controlRight(FORWARD,20);
 			}
-			else if(theta<PI/2&&theta>0.3){
+			else if(theta<PI/2-0.2&&theta>0.2){
 				radian = 5;
 				turnTo(turn+radian);
 				controlLeft(FORWARD,speed);
@@ -142,7 +142,7 @@ int main()
 			else{
 				stop_flag++;
 
-				if(stop_flag>2){
+				if(stop_flag>1){
 					end_flag = 1;
 					delay(500);
 					stopLeft();
