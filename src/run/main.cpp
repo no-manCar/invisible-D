@@ -47,7 +47,7 @@ int main()
 	VideoCapture capture(CAM_PATH);
 
 	int radian = 0;
-	int stop_flag = 0;
+	int stop_flag = 0,end_flag = 0;
 
 	Mat element = getStructuringElement(MORPH_RECT, Size(7, 5) );
 
@@ -62,6 +62,7 @@ int main()
 	Mat image;
 	while(true)
 	{
+		if(end_flag)break;
 //
 //		controlLeft(FORWARD,50);
 //		controlRight(FORWARD,50);
@@ -139,10 +140,16 @@ int main()
 //				controlRight(FORWARD,15);
 			}
 			else{
+				stop_flag++;
 
+				if(stop_flag>2){
+					end_flag = 1;
+					delay(500);
+					stopLeft();
+					stopRight();
+				}
 				
-				stopLeft();
-				stopRight();
+
 			}
 
 //			Filter to remove vertical and horizontal lines,
