@@ -98,8 +98,8 @@ int main()
 
 		if(!lines.size()){
 			turnTo(0);
-			controlLeft(FORWARD,5);
-			controlRight(FORWARD,5);
+			controlLeft(FORWARD,15);
+			controlRight(FORWARD,15);
 		}
 
 
@@ -120,18 +120,18 @@ int main()
 
 			if(theta>PI/2&&theta<PI-0.3){
 				radian = -5;
-				turnTo(-10+radian);
-				controlLeft(FORWARD,5);
-				controlRight(FORWARD,5);
+				turnTo(-15+radian);
+				controlLeft(FORWARD,15);
+				controlRight(FORWARD,15);
 //				clog << 1;
 //				controlLeft(FORWARD,15);
 //				controlRight(FORWARD,20);
 			}
 			else if(theta<PI/2&&theta>0.3){
 				radian = 5;
-				turnTo(10+radian);
-				controlLeft(FORWARD,5);
-				controlRight(FORWARD,5);
+				turnTo(15+radian);
+				controlLeft(FORWARD,15);
+				controlRight(FORWARD,15);
 //				clog <<2;
 // 				controlLeft(FORWARD,20);
 //				controlRight(FORWARD,15);
