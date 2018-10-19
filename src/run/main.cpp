@@ -137,8 +137,7 @@ int main()
 //				controlRight(FORWARD,15);
 			}
 			else{
-				
-					
+
 				
 				stopLeft();
 				stopRight();
