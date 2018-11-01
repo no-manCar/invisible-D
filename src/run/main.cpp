@@ -144,7 +144,8 @@ int main()
 
 				if(stop_flag&&rho<15){
 					end_flag = 1;
-					turnTo(radian);
+					if(theta>PI/2)turnTo(-3);
+					if(theta<PI/2)turnTo(3);
 					//
 					controlLeft(FORWARD,speed);
 					controlRight(FORWARD,speed);
