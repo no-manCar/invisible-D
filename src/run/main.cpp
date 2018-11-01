@@ -145,6 +145,7 @@ int main()
 				if(stop_flag>1){
 					end_flag = 1;
 					turnTo(radian);
+					//
 					controlLeft(FORWARD,speed);
 					controlRight(FORWARD,speed);
 					delay(2500);
