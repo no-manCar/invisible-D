@@ -62,7 +62,7 @@ int main()
 
 	Mat image;
 
-	int p=40;
+	int p=40*2;
 	speed=3;
 
 
