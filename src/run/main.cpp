@@ -45,7 +45,7 @@ int main()
 
 
 	VideoCapture capture(CAM_PATH);
-	delay(1000);
+	delay(5000);
 
 	int radian = 0;
 	int stop_flag = 0,end_flag = 0;
