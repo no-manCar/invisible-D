@@ -25,7 +25,7 @@ const int CANNY_LOWER_BOUND=10;
 const int CANNY_UPPER_BOUND=250;
 const int HOUGH_THRESHOLD=150;
 const int THRESHOLD = 120;
-const int speed = 7;
+const int speed = 10;
 const int turn = 10;
 
 int main()
@@ -139,23 +139,23 @@ int main()
 // 				controlLeft(FORWARD,20);
 //				controlRight(FORWARD,15);
 			}
-			else{
-				stop_flag++;
-
-				if(stop_flag&&rho<15){
-					end_flag = 1;
-					if(theta>PI/2)turnTo(-3);
-					if(theta<PI/2)turnTo(3);
-					//
-					controlLeft(FORWARD,speed);
-					controlRight(FORWARD,speed);
-					delay(2500);
-					stopLeft();
-					stopRight();
-				}
-				
-
-			}
+//			else{
+//				stop_flag++;
+//
+//				if(stop_flag&&rho<15){
+//					end_flag = 1;
+//					if(theta>PI/2)turnTo(-3);
+//					if(theta<PI/2)turnTo(3);
+//					//
+//					controlLeft(FORWARD,speed);
+//					controlRight(FORWARD,speed);
+//					delay(2500);
+//					stopLeft();
+//					stopRight();
+//				}
+//
+//
+//			}
 
 //			Filter to remove vertical and horizontal lines,
 //			and atan(0.09) equals about 5 degrees.
