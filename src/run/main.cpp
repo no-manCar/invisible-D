@@ -48,7 +48,7 @@ int main()
 
 
 	int radian = 0;
-	int stop_flag = 0,end_flag = 0;
+	int stop_flag = 1,end_flag = 0;
 
 	Mat element = getStructuringElement(MORPH_RECT, Size(7, 5) );
 
@@ -62,14 +62,13 @@ int main()
 
 	Mat image;
 
-	delay(5000);
+
 	while(true)
 	{
 //		if(end_flag)break;
 //
 //		controlLeft(FORWARD,50);
 //		controlRight(FORWARD,50);
-		stop_flag = 0;
 
 		capture>>image;
 		if(image.empty())
@@ -111,6 +110,9 @@ int main()
 
 		float maxRad=-2*PI;
 		float minRad=2*PI;
+		if(stop_flag)delay(5000);
+		stop_flag = 0;
+
 
 		//Draw the lines and judge the slope
 		for(vector<Vec2f>::const_iterator it=lines.begin();it!=lines.end();++it)
