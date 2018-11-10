@@ -25,7 +25,7 @@ const int CANNY_LOWER_BOUND=10;
 const int CANNY_UPPER_BOUND=250;
 const int HOUGH_THRESHOLD=150;
 const int THRESHOLD = 120;
-const int speed = 8;
+int speed = 8;
 const int turn = 10;
 
 int main()
