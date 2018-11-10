@@ -36,6 +36,7 @@ int main()
 	clog<<"Frame Size: "<<dWidth<<"x"<<dHeight<<endl;
 
 	Mat image;
+	int p = 40;
 	while(true)
 	{
 		capture>>image;

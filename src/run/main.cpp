@@ -62,6 +62,9 @@ int main()
 
 	Mat image;
 
+	int p=40;
+	speed=3;
+
 
 	while(true)
 	{
@@ -73,7 +76,8 @@ int main()
 		capture>>image;
 		if(image.empty())
 			break;
-                
+		p--;
+		if(p<1)speed=8;
 		Mat blur,open,close,binary,grey,smooth;
 
 		Rect roi(0,image.rows/3,image.cols,image.rows/3);
