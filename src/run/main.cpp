@@ -110,7 +110,7 @@ int main()
 
 		float maxRad=-2*PI;
 		float minRad=2*PI;
-		if(stop_flag)delay(5000);
+//		if(stop_flag)delay(5000);
 		stop_flag = 0;
 
 
