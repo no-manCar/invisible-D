@@ -25,7 +25,7 @@ const int CANNY_LOWER_BOUND=10;
 const int CANNY_UPPER_BOUND=250;
 const int HOUGH_THRESHOLD=150;
 const int THRESHOLD = 120;
-const int speed = 10;
+const int speed = 8;
 const int turn = 10;
 
 int main()
@@ -45,6 +45,7 @@ int main()
 
 
 	VideoCapture capture(CAM_PATH);
+	delay(1000);
 
 	int radian = 0;
 	int stop_flag = 0,end_flag = 0;
