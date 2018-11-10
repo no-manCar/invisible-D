@@ -26,7 +26,7 @@ const int CANNY_UPPER_BOUND=250;
 const int HOUGH_THRESHOLD=150;
 const int THRESHOLD = 120;
 const int speed = 8;
-const int turn = 7;
+const int turn = 10;
 
 int main()
 {
@@ -45,7 +45,7 @@ int main()
 
 
 	VideoCapture capture(CAM_PATH);
-	delay(5000);
+
 
 	int radian = 0;
 	int stop_flag = 0,end_flag = 0;
@@ -61,6 +61,8 @@ int main()
 	double dHeight=capture.get(CV_CAP_PROP_FRAME_HEIGHT);	
 
 	Mat image;
+
+	delay(5000);
 	while(true)
 	{
 //		if(end_flag)break;
